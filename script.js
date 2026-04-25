@@ -26,6 +26,8 @@ const playlistDescription = document.getElementById("playlistDescription");
 const playlistTable = document.getElementById("playlistTable");
 const queueList = document.getElementById("queueList");
 const queueCount = document.getElementById("queueCount");
+const volumeButton = document.getElementById("volumeButton");
+const volumeGlyph = document.getElementById("volumeGlyph");
 const volumeSlider = document.getElementById("volumeSlider");
 const volumeValue = document.getElementById("volumeValue");
 const tagChips = document.querySelectorAll(".tag-chip");
@@ -177,6 +179,17 @@ function syncThemeLabel() {
 
 function syncVolumeLabel() {
   volumeValue.textContent = `${volumeSlider.value}%`;
+
+  const level = Number(volumeSlider.value);
+  if (level === 0) {
+    volumeGlyph.textContent = "🔇";
+  } else if (level < 35) {
+    volumeGlyph.textContent = "🔈";
+  } else if (level < 70) {
+    volumeGlyph.textContent = "🔉";
+  } else {
+    volumeGlyph.textContent = "🔊";
+  }
 }
 
 function syncPlaybackUi() {
@@ -505,6 +518,19 @@ shuffleButton.addEventListener("click", () => {
 });
 
 volumeSlider.addEventListener("input", () => {
+  syncVolumeLabel();
+  if (gainNode) {
+    gainNode.gain.value = Number(volumeSlider.value) / 400;
+  }
+});
+
+volumeButton.addEventListener("click", () => {
+  if (Number(volumeSlider.value) === 0) {
+    volumeSlider.value = 70;
+  } else {
+    volumeSlider.value = 0;
+  }
+
   syncVolumeLabel();
   if (gainNode) {
     gainNode.gain.value = Number(volumeSlider.value) / 400;

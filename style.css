@@ -742,6 +742,11 @@ body:not(.is-playing) .eq-bar {
   opacity: 0.9;
 }
 
+.volume-glyph {
+  font-size: 1rem;
+  line-height: 1;
+}
+
 .volume-slider {
   flex: 1;
   min-width: 90px;
