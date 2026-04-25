@@ -441,6 +441,24 @@ function playPreviousTrack() {
   renderPlaylist();
 }
 
+function toggleCurrentTrack(event) {
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  if (filteredTracks.length === 0) {
+    return;
+  }
+
+  if (!isPlaying && elapsedSeconds === 0) {
+    playTrackAtIndex(currentTrackIndex);
+    return;
+  }
+
+  setPlaybackState(!isPlaying);
+}
+
 function applyFilters() {
   filteredTracks = getVisibleTracks();
 
@@ -477,31 +495,8 @@ tagChips.forEach((chip) => {
   });
 });
 
-heroPlayButton.addEventListener("click", () => {
-  if (filteredTracks.length === 0) {
-    return;
-  }
-
-  if (!isPlaying && elapsedSeconds === 0) {
-    playTrackAtIndex(currentTrackIndex);
-    return;
-  }
-
-  setPlaybackState(!isPlaying);
-});
-
-playerMainButton.addEventListener("click", () => {
-  if (filteredTracks.length === 0) {
-    return;
-  }
-
-  if (!isPlaying && elapsedSeconds === 0) {
-    playTrackAtIndex(currentTrackIndex);
-    return;
-  }
-
-  setPlaybackState(!isPlaying);
-});
+heroPlayButton.addEventListener("click", toggleCurrentTrack);
+playerMainButton.addEventListener("click", toggleCurrentTrack);
 
 playAllButton.addEventListener("click", () => {
   if (filteredTracks.length > 0) {
@@ -509,8 +504,17 @@ playAllButton.addEventListener("click", () => {
   }
 });
 
-previousButton.addEventListener("click", playPreviousTrack);
-nextButton.addEventListener("click", playNextTrack);
+previousButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+  playPreviousTrack();
+});
+
+nextButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+  playNextTrack();
+});
 
 shuffleButton.addEventListener("click", () => {
   shuffleEnabled = !shuffleEnabled;

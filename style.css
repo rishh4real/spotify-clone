@@ -654,9 +654,23 @@ body:not(.is-playing) .eq-bar {
   margin-bottom: 10px;
 }
 
+.player-controls button {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
 .icon-button,
 .play-main {
   background: transparent;
+}
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
 }
 
 .icon-button img {
@@ -679,6 +693,7 @@ body:not(.is-playing) .eq-bar {
   border-radius: 50%;
   background: #ffffff;
   color: #000000;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
 }
 
 .play-main-icon {
