@@ -26,6 +26,7 @@ const playlistTable = document.getElementById("playlistTable");
 const queueList = document.getElementById("queueList");
 const queueCount = document.getElementById("queueCount");
 const volumeSlider = document.getElementById("volumeSlider");
+const volumeValue = document.getElementById("volumeValue");
 const tagChips = document.querySelectorAll(".tag-chip");
 const savedTheme = localStorage.getItem("spotify-clone-theme");
 
@@ -171,6 +172,10 @@ function syncThemeLabel() {
   themeToggle.textContent = document.body.classList.contains("light-mode")
     ? "Dark mode"
     : "Moonlight mode";
+}
+
+function syncVolumeLabel() {
+  volumeValue.textContent = `${volumeSlider.value}%`;
 }
 
 function getVisibleTracks() {
@@ -485,6 +490,7 @@ shuffleButton.addEventListener("click", () => {
 });
 
 volumeSlider.addEventListener("input", () => {
+  syncVolumeLabel();
   if (gainNode) {
     gainNode.gain.value = Number(volumeSlider.value) / 400;
   }
@@ -519,5 +525,6 @@ if (savedTheme === "light") {
 }
 
 syncThemeLabel();
+syncVolumeLabel();
 applyFilters();
 startProgressLoop();

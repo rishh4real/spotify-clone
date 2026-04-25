@@ -236,8 +236,13 @@
       </div>
 
       <div class="player-extra">
-        <button class="icon-button" type="button"><img src="./assetss/player_icon4.png" alt="Volume" /></button>
-        <input type="range" min="0" max="100" value="70" class="volume-slider" id="volumeSlider" />
+        <div class="volume-control">
+          <button class="volume-button" id="volumeButton" type="button" aria-label="Volume">
+            <img src="./assetss/player_icon4.png" alt="Volume" />
+          </button>
+          <input type="range" min="0" max="100" value="70" class="volume-slider" id="volumeSlider" />
+          <span class="volume-value" id="volumeValue">70%</span>
+        </div>
       </div>
     </footer>
 
