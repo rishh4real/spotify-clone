@@ -170,6 +170,10 @@ function formatTime(totalSeconds) {
   return `${minutes}:${String(seconds).padStart(2, "0")}`;
 }
 
+function getCurrentTrack() {
+  return filteredTracks[currentTrackIndex] || tracks[0];
+}
+
 function syncThemeLabel() {
   themeToggle.textContent = document.body.classList.contains("light-mode")
     ? "Dark mode"
@@ -307,13 +311,14 @@ function renderPlaylist() {
 }
 
 function syncTrackInfo() {
-  const currentTrack = filteredTracks[currentTrackIndex] || tracks[0];
+  const currentTrack = getCurrentTrack();
   trackDisplay.textContent = currentTrack.title;
   artistDisplay.textContent = `${currentTrack.artist} • ${currentTrack.album}`;
   playerCover.src = currentTrack.image;
   durationLabel.textContent = formatTime(currentTrack.duration);
   currentTimeLabel.textContent = formatTime(elapsedSeconds);
-  progressSlider.value = Math.min(100, (elapsedSeconds / currentTrack.duration) * 100);
+  progressSlider.max = currentTrack.duration;
+  progressSlider.value = elapsedSeconds;
   playStateLabel.textContent = isPlaying ? "Playing" : "Paused";
   document.body.classList.toggle("is-playing", isPlaying);
 }
@@ -550,8 +555,8 @@ progressSlider.addEventListener("input", () => {
     return;
   }
 
-  const currentTrack = filteredTracks[currentTrackIndex];
-  elapsedSeconds = Math.round((Number(progressSlider.value) / 100) * currentTrack.duration);
+  const currentTrack = getCurrentTrack();
+  elapsedSeconds = Math.min(currentTrack.duration, Number(progressSlider.value));
   syncTrackInfo();
 });
 
