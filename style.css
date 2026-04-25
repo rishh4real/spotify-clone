@@ -714,13 +714,24 @@ body:not(.is-playing) .eq-bar {
 }
 
 .progress-row {
+  justify-content: center;
+}
+
+.progress-control {
+  display: flex;
+  align-items: center;
   gap: 12px;
+  width: min(100%, 520px);
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .progress-row span {
   font-size: 0.8rem;
   color: var(--muted);
-  flex: 1;
+  min-width: 34px;
 }
 
 .progress-slider {
@@ -818,6 +829,11 @@ body:not(.is-playing) .eq-bar {
 }
 
 .light-mode .volume-control {
+  background: rgba(18, 18, 18, 0.05);
+  border-color: rgba(18, 18, 18, 0.08);
+}
+
+.light-mode .progress-control {
   background: rgba(18, 18, 18, 0.05);
   border-color: rgba(18, 18, 18, 0.08);
 }
