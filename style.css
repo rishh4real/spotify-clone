@@ -669,14 +669,26 @@ body:not(.is-playing) .eq-bar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: var(--muted);
+}
+
+.icon-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
 }
 
 .icon-button img {
   width: 18px;
   height: 18px;
   opacity: 0.76;
+}
+
+.control-glyph {
+  font-size: 1rem;
+  line-height: 1;
 }
 
 .play-main img {
@@ -688,8 +700,8 @@ body:not(.is-playing) .eq-bar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
   background: #ffffff;
   color: #000000;
@@ -697,7 +709,7 @@ body:not(.is-playing) .eq-bar {
 }
 
 .play-main-icon {
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1;
 }
 
@@ -807,6 +819,10 @@ body:not(.is-playing) .eq-bar {
 .light-mode .play-main {
   background: #121212;
   color: #ffffff;
+}
+
+.light-mode .icon-button:hover {
+  background: rgba(18, 18, 18, 0.08);
 }
 
 .light-mode .volume-control {

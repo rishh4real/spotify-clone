@@ -438,7 +438,7 @@ function playPreviousTrack() {
   renderPlaylist();
 }
 
-function toggleCurrentTrack(event) {
+function playCurrentTrack(event) {
   if (event) {
     event.preventDefault();
     event.stopPropagation();
@@ -448,12 +448,32 @@ function toggleCurrentTrack(event) {
     return;
   }
 
-  if (!isPlaying && elapsedSeconds === 0) {
+  if (!isPlaying) {
     playTrackAtIndex(currentTrackIndex);
     return;
   }
+}
 
-  setPlaybackState(!isPlaying);
+function pauseCurrentTrack(event) {
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+
+  if (filteredTracks.length === 0) {
+    return;
+  }
+
+  setPlaybackState(false);
+}
+
+function toggleCurrentTrack(event) {
+  if (isPlaying) {
+    pauseCurrentTrack(event);
+    return;
+  }
+
+  playCurrentTrack(event);
 }
 
 function applyFilters() {
@@ -493,7 +513,7 @@ tagChips.forEach((chip) => {
 });
 
 heroPlayButton.addEventListener("click", toggleCurrentTrack);
-playerMainButton.addEventListener("click", toggleCurrentTrack);
+playerMainButton.onclick = toggleCurrentTrack;
 
 playAllButton.addEventListener("click", () => {
   if (filteredTracks.length > 0) {

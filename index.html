@@ -218,13 +218,21 @@
 
       <div class="player-center">
         <div class="player-controls">
-          <button class="icon-button" id="shuffleButton" type="button"><img src="./assetss/player_icon1.png" alt="Shuffle" /></button>
-          <button class="icon-button" id="previousButton" type="button"><img src="./assetss/player_icon2.png" alt="Previous" /></button>
+          <button class="icon-button" id="shuffleButton" type="button" aria-label="Shuffle">
+            <span class="control-glyph" aria-hidden="true">⇄</span>
+          </button>
+          <button class="icon-button" id="previousButton" type="button" aria-label="Previous">
+            <span class="control-glyph" aria-hidden="true">⏮</span>
+          </button>
           <button class="play-main" id="playerMainButton" type="button" aria-label="Play">
             <span class="play-main-icon" id="playerMainIcon">▶</span>
           </button>
-          <button class="icon-button" id="nextButton" type="button"><img src="./assetss/player_icon3.png" alt="Next" /></button>
-          <button class="icon-button" type="button"><img src="./assetss/player_icon5.png" alt="Queue" /></button>
+          <button class="icon-button" id="nextButton" type="button" aria-label="Next">
+            <span class="control-glyph" aria-hidden="true">⏭</span>
+          </button>
+          <button class="icon-button" type="button" aria-label="Queue">
+            <span class="control-glyph" aria-hidden="true">☰</span>
+          </button>
         </div>
         <div class="progress-row">
           <span id="currentTimeLabel">0:00</span>
