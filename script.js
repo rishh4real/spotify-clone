@@ -8,6 +8,7 @@ const themeToggle = document.getElementById("themeToggle");
 const quickCards = document.querySelectorAll(".quick-card");
 const musicCards = document.querySelectorAll(".music-card");
 const tagChips = document.querySelectorAll(".tag-chip");
+const savedTheme = localStorage.getItem("spotify-clone-theme");
 
 let isPlaying = false;
 let progressValue = 34;
@@ -24,6 +25,12 @@ function updatePlayer(trackName, subtitle, imageSource) {
   if (imageSource) {
     playerCover.src = imageSource;
   }
+}
+
+function syncThemeLabel() {
+  themeToggle.textContent = document.body.classList.contains("light-mode")
+    ? "Dark mode"
+    : "Moonlight mode";
 }
 
 function startProgressLoop() {
@@ -108,10 +115,17 @@ document.addEventListener("keydown", (event) => {
 
 themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("light-mode");
-  themeToggle.textContent = document.body.classList.contains("light-mode")
-    ? "Dark mode"
-    : "Moonlight mode";
+  localStorage.setItem(
+    "spotify-clone-theme",
+    document.body.classList.contains("light-mode") ? "light" : "dark"
+  );
+  syncThemeLabel();
 });
 
+if (savedTheme === "light") {
+  document.body.classList.add("light-mode");
+}
+
+syncThemeLabel();
 syncProgress();
 startProgressLoop();
