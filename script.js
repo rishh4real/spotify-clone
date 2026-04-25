@@ -29,7 +29,6 @@ const queueCount = document.getElementById("queueCount");
 const volumeButton = document.getElementById("volumeButton");
 const volumeGlyph = document.getElementById("volumeGlyph");
 const volumeSlider = document.getElementById("volumeSlider");
-const volumeValue = document.getElementById("volumeValue");
 const tagChips = document.querySelectorAll(".tag-chip");
 const savedTheme = localStorage.getItem("spotify-clone-theme");
 
@@ -178,8 +177,6 @@ function syncThemeLabel() {
 }
 
 function syncVolumeLabel() {
-  volumeValue.textContent = `${volumeSlider.value}%`;
-
   const level = Number(volumeSlider.value);
   if (level === 0) {
     volumeGlyph.textContent = "🔇";

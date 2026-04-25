@@ -734,7 +734,7 @@ body:not(.is-playing) .eq-bar {
   display: flex;
   align-items: center;
   gap: 12px;
-  min-width: 220px;
+  min-width: 180px;
   padding: 10px 14px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.06);
@@ -766,14 +766,6 @@ body:not(.is-playing) .eq-bar {
   flex: 1;
   min-width: 90px;
   accent-color: var(--green);
-}
-
-.volume-value {
-  min-width: 38px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--muted);
-  text-align: right;
 }
 
 .light-mode {
