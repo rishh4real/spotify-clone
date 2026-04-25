@@ -9,6 +9,7 @@ const heroMood = document.getElementById("heroMood");
 const heroPlayButton = document.getElementById("heroPlayButton");
 const playAllButton = document.getElementById("playAllButton");
 const playerMainButton = document.getElementById("playerMainButton");
+const playerMainIcon = document.getElementById("playerMainIcon");
 const previousButton = document.getElementById("previousButton");
 const nextButton = document.getElementById("nextButton");
 const shuffleButton = document.getElementById("shuffleButton");
@@ -178,6 +179,13 @@ function syncVolumeLabel() {
   volumeValue.textContent = `${volumeSlider.value}%`;
 }
 
+function syncPlaybackUi() {
+  heroPlayButton.textContent = isPlaying ? "Pause" : "Play now";
+  playerMainButton.style.transform = isPlaying ? "scale(1.08)" : "scale(1)";
+  playerMainButton.setAttribute("aria-label", isPlaying ? "Pause" : "Play");
+  playerMainIcon.textContent = isPlaying ? "❚❚" : "▶";
+}
+
 function getVisibleTracks() {
   return tracks.filter((track) => {
     const matchesCategory =
@@ -322,6 +330,9 @@ function startSynth(track) {
   stopSynth();
 
   audioContext = audioContext || new window.AudioContext();
+  if (audioContext.state === "suspended") {
+    audioContext.resume().catch(() => {});
+  }
   oscillator = audioContext.createOscillator();
   gainNode = audioContext.createGain();
 
@@ -368,8 +379,7 @@ function startProgressLoop() {
 
 function setPlaybackState(nextState) {
   isPlaying = nextState;
-  heroPlayButton.textContent = isPlaying ? "Pause" : "Play now";
-  playerMainButton.style.transform = isPlaying ? "scale(1.08)" : "scale(1)";
+  syncPlaybackUi();
 
   if (filteredTracks.length > 0 && isPlaying) {
     startSynth(filteredTracks[currentTrackIndex]);
@@ -459,6 +469,11 @@ heroPlayButton.addEventListener("click", () => {
     return;
   }
 
+  if (!isPlaying && elapsedSeconds === 0) {
+    playTrackAtIndex(currentTrackIndex);
+    return;
+  }
+
   setPlaybackState(!isPlaying);
 });
 
@@ -526,5 +541,6 @@ if (savedTheme === "light") {
 
 syncThemeLabel();
 syncVolumeLabel();
+syncPlaybackUi();
 applyFilters();
 startProgressLoop();

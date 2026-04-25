@@ -670,6 +670,22 @@ body:not(.is-playing) .eq-bar {
   height: 40px;
 }
 
+.play-main {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #000000;
+}
+
+.play-main-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
 .progress-row {
   gap: 12px;
 }
@@ -774,6 +790,11 @@ body:not(.is-playing) .eq-bar {
 .light-mode .volume-button {
   background: #ececec;
   color: var(--text);
+}
+
+.light-mode .play-main {
+  background: #121212;
+  color: #ffffff;
 }
 
 .light-mode .volume-control {
