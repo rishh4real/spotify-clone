@@ -25,5 +25,3 @@ A Spotify-inspired music player homepage built with HTML, CSS, and JavaScript.
 ## Run Locally
 
 Open `index.html` in a browser.
-
-For the best demo experience, click any play button to allow audio playback in the browser.
