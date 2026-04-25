@@ -1,4 +1,5 @@
 # Spotify Clone
+https://rishh4real.github.io/spotify-clone/
 
 A Spotify-inspired music player homepage built with HTML, CSS, and JavaScript.
 
