@@ -720,21 +720,13 @@ body:not(.is-playing) .eq-bar {
 .progress-row span {
   font-size: 0.8rem;
   color: var(--muted);
+  flex: 1;
 }
 
-.progress-track {
+.progress-slider {
   flex: 1;
   height: 5px;
-  border-radius: 999px;
-  background: #4d4d4d;
-  overflow: hidden;
-}
-
-.progress-fill {
-  width: 0;
-  height: 100%;
-  background: #ffffff;
-  border-radius: inherit;
+  accent-color: var(--green);
 }
 
 .player-extra {

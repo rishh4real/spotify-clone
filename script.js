@@ -13,7 +13,7 @@ const playerMainIcon = document.getElementById("playerMainIcon");
 const previousButton = document.getElementById("previousButton");
 const nextButton = document.getElementById("nextButton");
 const shuffleButton = document.getElementById("shuffleButton");
-const progressFill = document.getElementById("progressFill");
+const progressSlider = document.getElementById("progressSlider");
 const currentTimeLabel = document.getElementById("currentTimeLabel");
 const durationLabel = document.getElementById("durationLabel");
 const playStateLabel = document.getElementById("playStateLabel");
@@ -313,7 +313,7 @@ function syncTrackInfo() {
   playerCover.src = currentTrack.image;
   durationLabel.textContent = formatTime(currentTrack.duration);
   currentTimeLabel.textContent = formatTime(elapsedSeconds);
-  progressFill.style.width = `${(elapsedSeconds / currentTrack.duration) * 100}%`;
+  progressSlider.value = Math.min(100, (elapsedSeconds / currentTrack.duration) * 100);
   playStateLabel.textContent = isPlaying ? "Playing" : "Paused";
   document.body.classList.toggle("is-playing", isPlaying);
 }
@@ -543,6 +543,16 @@ volumeSlider.addEventListener("input", () => {
   if (gainNode) {
     gainNode.gain.value = Number(volumeSlider.value) / 400;
   }
+});
+
+progressSlider.addEventListener("input", () => {
+  if (filteredTracks.length === 0) {
+    return;
+  }
+
+  const currentTrack = filteredTracks[currentTrackIndex];
+  elapsedSeconds = Math.round((Number(progressSlider.value) / 100) * currentTrack.duration);
+  syncTrackInfo();
 });
 
 volumeButton.addEventListener("click", () => {
