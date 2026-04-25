@@ -39,19 +39,19 @@
               <img src="./assetss/library_icon.png" alt="Library icon" class="library-icon" />
               <span>Your Library</span>
             </div>
-            <button class="round-button" aria-label="Add playlist">+</button>
+            <button class="round-button" type="button" aria-label="Add playlist">+</button>
           </div>
 
           <div class="library-card">
             <h3>Create your first playlist</h3>
             <p>It is easy, we will help you build one for every mood.</p>
-            <button>Create playlist</button>
+            <button type="button">Create playlist</button>
           </div>
 
           <div class="library-card muted-card">
             <h3>Looking for podcasts?</h3>
             <p>Follow your favorite creators and never miss a new episode.</p>
-            <button>Browse podcasts</button>
+            <button type="button">Browse podcasts</button>
           </div>
 
           <div class="sidebar-footer">
@@ -60,7 +60,7 @@
             <a href="#">Privacy Center</a>
             <a href="#">Cookies</a>
             <a href="#">About Ads</a>
-            <button class="language-button">English</button>
+            <button class="language-button" type="button">English</button>
           </div>
         </div>
       </aside>
@@ -68,19 +68,27 @@
       <main class="main-content panel">
         <header class="topbar">
           <div class="history-controls">
-            <button class="round-button dark-button" aria-label="Go back">
+            <button class="round-button dark-button" type="button" aria-label="Go back">
               <img src="./assetss/backward_icon.png" alt="Back" />
             </button>
-            <button class="round-button dark-button" aria-label="Go forward">
+            <button class="round-button dark-button" type="button" aria-label="Go forward">
               <img src="./assetss/forward_icon.png" alt="Forward" />
             </button>
           </div>
           <div class="topbar-actions">
-            <button class="install-button">Install App</button>
-            <button class="theme-toggle" id="themeToggle">Moonlight mode</button>
-            <button class="profile-chip">S</button>
+            <button class="install-button" type="button">Install App</button>
+            <button class="theme-toggle" id="themeToggle" type="button">Moonlight mode</button>
+            <button class="profile-chip" type="button">S</button>
           </div>
         </header>
+
+        <section class="browse-tags" aria-label="Browse categories">
+          <button class="tag-chip active-chip" type="button">All</button>
+          <button class="tag-chip" type="button">Music</button>
+          <button class="tag-chip" type="button">Podcasts</button>
+          <button class="tag-chip" type="button">Live</button>
+          <button class="tag-chip" type="button">Made for You</button>
+        </section>
 
         <section class="hero-banner">
           <div>
@@ -90,8 +98,8 @@
               Soft beats, clean transitions, and enough energy to keep your assignments moving.
             </p>
             <div class="hero-actions">
-              <button class="hero-play" id="heroPlayButton">Play now</button>
-              <button class="hero-save">Save for later</button>
+              <button class="hero-play" id="heroPlayButton" type="button">Play now</button>
+              <button class="hero-save" type="button">Save for later</button>
             </div>
           </div>
           <div class="hero-stats">
@@ -102,28 +110,28 @@
         </section>
 
         <section class="quick-picks">
-          <article class="quick-card active-card" data-track="Daily Mix 1">
+          <article class="quick-card active-card" data-track="Daily Mix 1" tabindex="0">
             <img src="./assetss/card1img.jpeg" alt="Daily Mix 1 cover" />
             <div>
               <h3>Daily Mix 1</h3>
               <p>Indie pop, soft rock, and bright vocals.</p>
             </div>
           </article>
-          <article class="quick-card" data-track="Chill Hits">
+          <article class="quick-card" data-track="Chill Hits" tabindex="0">
             <img src="./assetss/card2img.jpeg" alt="Chill Hits cover" />
             <div>
               <h3>Chill Hits</h3>
               <p>Laid back songs for late evenings.</p>
             </div>
           </article>
-          <article class="quick-card" data-track="Lo-Fi Beats">
+          <article class="quick-card" data-track="Lo-Fi Beats" tabindex="0">
             <img src="./assetss/card3img.jpeg" alt="Lo-Fi Beats cover" />
             <div>
               <h3>Lo-Fi Beats</h3>
               <p>Calm loops for study sessions.</p>
             </div>
           </article>
-          <article class="quick-card" data-track="Pop Drive">
+          <article class="quick-card" data-track="Pop Drive" tabindex="0">
             <img src="./assetss/card4img.jpeg" alt="Pop Drive cover" />
             <div>
               <h3>Pop Drive</h3>
@@ -135,56 +143,88 @@
         <section class="content-section">
           <div class="section-heading">
             <div>
+              <h2>Popular artists</h2>
+              <p>Student favorites with the highest repeat count this week.</p>
+            </div>
+            <a href="#">Show all</a>
+          </div>
+          <div class="artist-strip">
+            <article class="artist-card">
+              <img src="./assetss/card1img.jpeg" alt="Ariana cover art" />
+              <h3>Ariana Lane</h3>
+              <p>Pop</p>
+            </article>
+            <article class="artist-card">
+              <img src="./assetss/card2img.jpeg" alt="Midnight Club cover art" />
+              <h3>Midnight Club</h3>
+              <p>Indie</p>
+            </article>
+            <article class="artist-card">
+              <img src="./assetss/card5img.jpeg" alt="Ocean Avenue cover art" />
+              <h3>Ocean Avenue</h3>
+              <p>Acoustic</p>
+            </article>
+            <article class="artist-card">
+              <img src="./assetss/card6img.jpeg" alt="Nova Drift cover art" />
+              <h3>Nova Drift</h3>
+              <p>Electronic</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-heading">
+            <div>
               <h2>Trending now</h2>
               <p>Most played picks by your campus crowd today.</p>
             </div>
             <a href="#">Show all</a>
           </div>
           <div class="card-grid">
-            <article class="music-card" data-track="Neon Nights">
+            <article class="music-card" data-track="Neon Nights" tabindex="0">
               <div class="cover-wrap">
                 <img src="./assetss/card1img.jpeg" alt="Neon Nights cover" />
-                <button class="play-float">▶</button>
+                <button class="play-float" type="button">▶</button>
               </div>
               <h3>Neon Nights</h3>
               <p>Pulse driven synth pop with a clean night drive feel.</p>
             </article>
-            <article class="music-card" data-track="City Rain">
+            <article class="music-card" data-track="City Rain" tabindex="0">
               <div class="cover-wrap">
                 <img src="./assetss/card2img.jpeg" alt="City Rain cover" />
-                <button class="play-float">▶</button>
+                <button class="play-float" type="button">▶</button>
               </div>
               <h3>City Rain</h3>
               <p>Modern R&amp;B and chill grooves for quiet hours.</p>
             </article>
-            <article class="music-card" data-track="Code and Coffee">
+            <article class="music-card" data-track="Code and Coffee" tabindex="0">
               <div class="cover-wrap">
                 <img src="./assetss/card3img.jpeg" alt="Code and Coffee cover" />
-                <button class="play-float">▶</button>
+                <button class="play-float" type="button">▶</button>
               </div>
               <h3>Code and Coffee</h3>
               <p>Steady beats that stay out of your way while you work.</p>
             </article>
-            <article class="music-card" data-track="Weekend Replay">
+            <article class="music-card" data-track="Weekend Replay" tabindex="0">
               <div class="cover-wrap">
                 <img src="./assetss/card4img.jpeg" alt="Weekend Replay cover" />
-                <button class="play-float">▶</button>
+                <button class="play-float" type="button">▶</button>
               </div>
               <h3>Weekend Replay</h3>
               <p>Big choruses and catchy hooks you already know.</p>
             </article>
-            <article class="music-card" data-track="Acoustic Window">
+            <article class="music-card" data-track="Acoustic Window" tabindex="0">
               <div class="cover-wrap">
                 <img src="./assetss/card5img.jpeg" alt="Acoustic Window cover" />
-                <button class="play-float">▶</button>
+                <button class="play-float" type="button">▶</button>
               </div>
               <h3>Acoustic Window</h3>
               <p>Warm unplugged sessions and softer storytelling tracks.</p>
             </article>
-            <article class="music-card" data-track="Night Bus">
+            <article class="music-card" data-track="Night Bus" tabindex="0">
               <div class="cover-wrap">
                 <img src="./assetss/card6img.jpeg" alt="Night Bus cover" />
-                <button class="play-float">▶</button>
+                <button class="play-float" type="button">▶</button>
               </div>
               <h3>Night Bus</h3>
               <p>Slow tempo electronic tracks for long rides home.</p>
@@ -234,13 +274,13 @@
 
       <div class="player-center">
         <div class="player-controls">
-          <button class="icon-button"><img src="./assetss/player_icon1.png" alt="Shuffle" /></button>
-          <button class="icon-button"><img src="./assetss/player_icon2.png" alt="Previous" /></button>
-          <button class="play-main" id="playerMainButton">
+          <button class="icon-button" type="button"><img src="./assetss/player_icon1.png" alt="Shuffle" /></button>
+          <button class="icon-button" type="button"><img src="./assetss/player_icon2.png" alt="Previous" /></button>
+          <button class="play-main" id="playerMainButton" type="button">
             <img src="./assetss/play_musicbar.png" alt="Play" />
           </button>
-          <button class="icon-button"><img src="./assetss/player_icon3.png" alt="Next" /></button>
-          <button class="icon-button"><img src="./assetss/player_icon5.png" alt="Queue" /></button>
+          <button class="icon-button" type="button"><img src="./assetss/player_icon3.png" alt="Next" /></button>
+          <button class="icon-button" type="button"><img src="./assetss/player_icon5.png" alt="Queue" /></button>
         </div>
         <div class="progress-row">
           <span>1:12</span>
@@ -252,7 +292,7 @@
       </div>
 
       <div class="player-extra">
-        <button class="icon-button"><img src="./assetss/player_icon4.png" alt="Volume" /></button>
+        <button class="icon-button" type="button"><img src="./assetss/player_icon4.png" alt="Volume" /></button>
         <input type="range" min="0" max="100" value="70" class="volume-slider" />
       </div>
     </footer>

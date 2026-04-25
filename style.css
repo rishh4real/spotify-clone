@@ -42,6 +42,14 @@ img {
   max-width: 100%;
 }
 
+button:focus-visible,
+a:focus-visible,
+article:focus-visible,
+input:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
 .app-shell {
   min-height: calc(100vh - 92px);
   padding: 12px;
@@ -80,7 +88,8 @@ img {
 .now-playing,
 .player-extra,
 .history-controls,
-.topbar-actions {
+.topbar-actions,
+.browse-tags {
   display: flex;
   align-items: center;
 }
@@ -157,7 +166,8 @@ img {
 .hero-play,
 .hero-save,
 .library-card button,
-.language-button {
+.language-button,
+.tag-chip {
   transition: transform 0.2s ease, background 0.2s ease;
 }
 
@@ -168,7 +178,8 @@ img {
 .hero-play:hover,
 .hero-save:hover,
 .library-card button:hover,
-.language-button:hover {
+.language-button:hover,
+.tag-chip:hover {
   transform: translateY(-1px);
 }
 
@@ -274,6 +285,25 @@ img {
   background: #ffd95a;
   color: #111111;
   font-weight: 800;
+}
+
+.browse-tags {
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.tag-chip {
+  border-radius: 999px;
+  background: #2a2a2a;
+  color: var(--text);
+  padding: 9px 14px;
+  font-weight: 600;
+}
+
+.active-chip {
+  background: #ffffff;
+  color: #000000;
 }
 
 .hero-banner {
@@ -390,13 +420,45 @@ img {
 .section-heading p,
 .section-heading a,
 .recent-row span,
-.now-playing p {
+.now-playing p,
+.artist-card p {
   color: var(--muted);
 }
 
 .section-heading a {
   text-decoration: none;
   font-weight: 700;
+}
+
+.artist-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.artist-card {
+  background: linear-gradient(180deg, #1c1c1c 0%, #121212 100%);
+  border-radius: 18px;
+  padding: 18px;
+  text-align: center;
+  transition: 0.28s ease;
+}
+
+.artist-card:hover {
+  background: #212121;
+  transform: translateY(-4px);
+}
+
+.artist-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 14px;
+}
+
+.artist-card h3 {
+  margin-bottom: 6px;
 }
 
 .card-grid {
@@ -594,10 +656,12 @@ img {
 .light-mode .library-card,
 .light-mode .quick-card,
 .light-mode .recent-row,
+.light-mode .artist-card,
 .light-mode .install-button,
 .light-mode .theme-toggle,
 .light-mode .round-button,
-.light-mode .hero-save {
+.light-mode .hero-save,
+.light-mode .tag-chip {
   color: var(--text);
 }
 
@@ -606,6 +670,7 @@ img {
 .light-mode .library-card,
 .light-mode .recent-row,
 .light-mode .quick-card,
+.light-mode .artist-card,
 .light-mode .music-player {
   background: rgba(255, 255, 255, 0.95);
 }
@@ -613,8 +678,14 @@ img {
 .light-mode .hero-save,
 .light-mode .install-button,
 .light-mode .theme-toggle,
-.light-mode .round-button {
+.light-mode .round-button,
+.light-mode .tag-chip {
   background: #ececec;
+}
+
+.light-mode .active-chip {
+  background: #121212;
+  color: #ffffff;
 }
 
 @media (max-width: 1100px) {
@@ -630,6 +701,7 @@ img {
     order: 1;
   }
 
+  .artist-strip,
   .card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -668,6 +740,7 @@ img {
   }
 
   .quick-picks,
+  .artist-strip,
   .card-grid {
     grid-template-columns: 1fr;
   }
